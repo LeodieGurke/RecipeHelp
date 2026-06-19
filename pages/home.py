@@ -14,6 +14,6 @@ class HomePage:
     button=tk.Button(root, text = "Recipe Book", command = openRecipes)
     button.pack()
 
+print("yo mama")
 
-
-    root.mainloop()
+root.mainloop()
