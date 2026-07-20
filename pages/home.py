@@ -10,42 +10,47 @@ class MyApp(tk.Frame):
         self.colour3 = 'WHITE'
 
         super().__init__(
-            root, bg=self.colour1        # frame.pack(padx=10,pady=20)
+            root, 
+            bg=self.colour1        # frame.pack(padx=10,pady=20)
         )
 
-
-        def load_main_widgets(self):
-            self.create_page_container()
-            self.create_pager()
-
-        def create_page_container(self):
-
-            self.page_container = tk.Frame(
-                self.main_frame,
-                background=self.colour1
-            )
-
-            self.main_frame = self
-            self.main_frame.pack(fill=tk.BOTH, expand=True)
-            self.main_frame.columnconfigure(0, weight=1)
-            self.main_frame.rowconfigure(0, weight=1)
-            self.main_frame.rowconfigure(1, weight=1)
-
-            self.page_container.grid(column=0, row=0, sticky=tk.NSEW)
+        self.main_frame = self
+        self.main_frame.pack(fill=tk.BOTH, expand=True)
+        self.main_frame.columnconfigure(0, weight=1)
+        self.main_frame.rowconfigure(0, weight=1)
+        
+        self.load_main_widgets()
 
 
 
-        def create_page_container(self):
-            pass
 
-        def create_pager(self):
+    def load_main_widgets(self):
+        self.create_page_container()
+        self.create_pager()
 
-            self.pager = tk.Frame(
-                self.main_frame,
-                background=self.colour1,
-                height=125,
-                width=400
-            )
+    def create_page_container(self):
+
+        self.page_container = tk.Frame(
+            self.main_frame,
+            background=self.colour1
+        )
+         
+        self.page_container.columnconfigure(0, weight=1)
+        self.page_container.rowconfigure(0, weight=0)
+        self.page_container.rowconfigure(1, weight=0)
+
+        self.page_container.grid(column=0, row=0, sticky=tk.NSEW)
+
+
+
+    def create_pager(self):
+
+        self.pager = tk.Frame(
+            self.main_frame,
+            background=self.colour1,
+            height=125,
+            width=400
+        )
 
         self.pager.columnconfigure(1, weight=1)
         self.pager.rowconfigure(0, weight=1)
