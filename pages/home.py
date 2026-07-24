@@ -57,6 +57,51 @@ class MyApp(tk.Frame):
         self.pager.grid(column=0, row=1, sticky=tk.NS)
         self.pager.grid_propagate(0)
 
+        prev_button = tk.Button(
+            self.pager,
+            background=self.colour2,
+            foreground=self.colour3,
+            activebackground=self.colour2,
+            activeforeground=self.colour3,
+            disabledforeground='#3B3A56',
+            highlightthickness=0,
+            width=7,
+            relief=tk.FLAT,
+            font=('Arial', 18),
+            cursor='hand1',
+            text='Previous',
+            state=tk.DISABLED
+        )
+
+        prev_button.grid(column=0, row=0)
+
+        self.page_number =tk.Label(
+            self.pager,
+            background=self.colour1,
+            foreground=self.colour3,
+            font=('Arial', 18)
+        )
+
+        self.page_number.grid(column=1, row=0)
+
+        next_button = tk.Button(
+            self.pager,
+            background=self.colour2,
+            foreground=self.colour3,
+            activebackground=self.colour2,
+            activeforeground=self.colour3,
+            disabledforeground='#3B3A56',
+            highlightthickness=0,
+            width=7,
+            relief=tk.FLAT,
+            font=('Arial', 18),
+            cursor='hand1',
+            text='Next',
+        )
+
+        next_button.grid(column=2, row=0)
+
+
 
 
 root = tk.Tk()
