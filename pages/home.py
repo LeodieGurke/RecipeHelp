@@ -5,6 +5,10 @@ class MyApp(tk.Frame):
 
     def __init__(self, root):
 
+        self.current_page_index = 0
+        self.pages = [self.page1, self.page2, self.page3, self.page4]
+
+
         self.colour1 = '#222448'
         self.colour2 = '#54527E'
         self.colour3 = 'WHITE'
@@ -27,6 +31,11 @@ class MyApp(tk.Frame):
     def load_main_widgets(self):
         self.create_page_container()
         self.create_pager()
+        self.pages[self.current_page_index]()
+
+    def clear_frame(self, frame):
+        for child in frame.winfo_children():
+            child.destroy()
 
     def create_page_container(self):
 
@@ -56,6 +65,17 @@ class MyApp(tk.Frame):
         self.pager.rowconfigure(0, weight=1)
         self.pager.grid(column=0, row=1, sticky=tk.NS)
         self.pager.grid_propagate(0)
+
+        def change_page(button):
+            self.clear_frame(self.page_container)
+
+            match button:
+                case 'Previous':
+                    self.current_page_index -= 1
+                    self.pages[self.current_page_index]()
+                case 'Next':
+                    self.current_page_index += 1
+                    self.pages[self.current_page_index]()
 
         prev_button = tk.Button(
             self.pager,
@@ -101,8 +121,130 @@ class MyApp(tk.Frame):
 
         next_button.grid(column=2, row=0)
 
+    def page1(self):
+
+        title = tk.Label(
+            self.page_container,
+            background=self.colour1,
+            foreground=self.colour3,
+            height=2,
+            font=('Arial', 26, 'bold'),
+            text='Page 1'
+        )
+
+        title.grid(column=0, row=0)
+
+        text=('Mein Leben endet hier, denn ich habe nur sehr wenig Ahnung vom programmieren.'
+              'Trotzdem wuerde ich das hier gerne zum funktionieren bekommen...'
+              'Wie kann irgendwer ueberhaupt lernen zu programmieren? Wer kann  sich das merken??? HILFE')
+        
+        content = tk.Label(
+            self.page_container,
+            background=self.colour2,
+            foreground=self.colour3,
+            justify=tk.LEFT,
+            anchor=tk.N,
+            pady=20,
+            font=('Arial', 16),
+            text=text,
+            wraplength=600
+        )
+
+        content.grid(column=0, row=1, sticky=tk.NSEW)
+
+    def page2(self):
+
+        title = tk.Label(
+            self.page_container,
+            background=self.colour1,
+            foreground=self.colour3,
+            height=2,
+            font=('Arial', 26, 'bold'),
+            text='Page 2'
+        )
+
+        title.grid(column=0, row=0)
+
+        text=('Ne, aber jetzt mal Ernsthaft.'
+              'Ich wuerde programmieren echt gerne umfangreicher koennen'
+              'Wenn es nicht so ein komischer Prozess zum lernen waere.')
+        
+        content = tk.Label(
+            self.page_container,
+            background=self.colour2,
+            foreground=self.colour3,
+            justify=tk.LEFT,
+            anchor=tk.N,
+            pady=20,
+            font=('Arial', 16),
+            text=text,
+            wraplength=600
+        )
+
+        content.grid(column=0, row=1, sticky=tk.NSEW)
+
+    def page3(self):
+
+        title = tk.Label(
+            self.page_container,
+            background=self.colour1,
+            foreground=self.colour3,
+            height=2,
+            font=('Arial', 26, 'bold'),
+            text='Page 3'
+        )
+
+        title.grid(column=0, row=0)
+
+        text=('Vielleicht ist das Lernen von Programmiersprachen einfach nicht fuer faule Menschen gemacht.'
+              'Was machen denn Leute in einer Programmierschule?'
+              'Rumsitzen und sich das selber beibringen? Was macht ein Lehrer? Man muss doch code auswendig lernen, oder nicht?')
+        
+        content = tk.Label(
+            self.page_container,
+            background=self.colour2,
+            foreground=self.colour3,
+            justify=tk.LEFT,
+            anchor=tk.N,
+            pady=20,
+            font=('Arial', 16),
+            text=text,
+            wraplength=600
+        )
+
+        content.grid(column=0, row=1, sticky=tk.NSEW)
 
 
+    def page4(self):
+
+        title = tk.Label(
+            self.page_container,
+            background=self.colour1,
+            foreground=self.colour3,
+            height=2,
+            font=('Arial', 26, 'bold'),
+            text='Page 4'
+        )
+
+        title.grid(column=0, row=0)
+
+        text=('Okay ich gebs zu.'
+              'An diesem Punkt bin ich einfach nur noch am rum labern.'
+              'Aber wei soll ich die Seiten sonst voll bekommen? Keine Ahnung.')
+        
+        content = tk.Label(
+            self.page_container,
+            background=self.colour2,
+            foreground=self.colour3,
+            justify=tk.LEFT,
+            anchor=tk.N,
+            pady=20,
+            font=('Arial', 16),
+            text=text,
+            wraplength=600
+        )
+
+        content.grid(column=0, row=1, sticky=tk.NSEW)
 
 root = tk.Tk()
 root.title("MyApp")
