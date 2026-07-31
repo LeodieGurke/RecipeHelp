@@ -77,6 +77,9 @@ class MyApp(tk.Frame):
                     self.current_page_index += 1
                     self.pages[self.current_page_index]()
 
+            self.page_number['text'] = f'{self.current_page_index + 1}/{len(self.pages)}'
+
+
         prev_button = tk.Button(
             self.pager,
             background=self.colour2,
@@ -90,7 +93,8 @@ class MyApp(tk.Frame):
             font=('Arial', 18),
             cursor='hand1',
             text='Previous',
-            state=tk.DISABLED
+            state=tk.DISABLED,
+            command=change_page('Previous')
         )
 
         prev_button.grid(column=0, row=0)
@@ -99,7 +103,8 @@ class MyApp(tk.Frame):
             self.pager,
             background=self.colour1,
             foreground=self.colour3,
-            font=('Arial', 18)
+            font=('Arial', 18),
+            text=f'{self.current_page_index + 1}/{len(self.pages)}'
         )
 
         self.page_number.grid(column=1, row=0)
