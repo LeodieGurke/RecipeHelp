@@ -152,6 +152,7 @@ class MyApp(tk.Frame):
             pady=20,
             font=('Arial', 16),
             text=text,
+        
             wraplength=600
         )
 

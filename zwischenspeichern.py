@@ -1,7 +1,7 @@
 import tkinter as tk
 
 from pages.recipes import RecipeBooks
-from pages.home import HomePage
+from home import HomePage
 from pages.chooser import RecipeChooser
 from pages.planner import Calendar
 from pages.list import ShoppingList
